@@ -624,7 +624,7 @@ if __name__ == "__main__":
 # ----- plot_figure2_official -----
 RENDERERS['plot_figure2_official'] = '''"""Render the formal Figure 2 selected for the manuscript.
 
-Panels b and d use the 800-m accessible-cooling specification. Panels e and f
+Panels b and d use the accessible-cooling specification. Panels e and f
 use 400-m green exposure, reachability and accessible cooling volume. A1-A4
 mini-map insets retain residential-cell bivariate colours.
 """
@@ -635,7 +635,7 @@ import plot_network_integrated_accessible_cooling_figure2 as figure2
 
 
 ANALYSIS = figure2.ANALYSIS
-RADIUS_800 = ANALYSIS / "accessible_cooling_radius_sensitivity_trial" / "800m"
+RADIUS = ANALYSIS / "accessible_cooling_radius_sensitivity_trial" / "800m"
 PANEL_E_400 = ANALYSIS / "accessible_cooling_integral_trial" / "panelE400_volume"
 OUT = ANALYSIS / "figures"
 
