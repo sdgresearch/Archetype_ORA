@@ -1,4 +1,4 @@
-"""Figure 5: Official-postcode efficacy and cooling outputs: 800-m service in b/d and 400-m service in e/f.
+"""Figure 5: Official-postcode efficacy and cooling outputs
 
 Run: python Figure5_cooling_performance.py
 Optional: --output-dir my_figures --csv Figure5_cooling_performance.csv
@@ -635,7 +635,7 @@ import plot_network_integrated_accessible_cooling_figure2 as figure2
 
 
 ANALYSIS = figure2.ANALYSIS
-RADIUS = ANALYSIS / "accessible_cooling_radius_sensitivity_trial" / "800m"
+RADIUS = ANALYSIS / "accessible_cooling_radius_sensitivity_trial" / "400m"
 PANEL_E_400 = ANALYSIS / "accessible_cooling_integral_trial" / "panelE400_volume"
 OUT = ANALYSIS / "figures"
 
@@ -643,7 +643,7 @@ OUT = ANALYSIS / "figures"
 def main() -> None:
     source = OUT / "source_data" / "Figure2_Archetype_cooling_performance"
     source.mkdir(parents=True, exist_ok=True)
-    figure2.TRIAL = RADIUS_800
+    figure2.TRIAL = RADIUS_400
     figure2.NONLINEAR = PANEL_E_400
     figure2.OUT = OUT
     figure2.SOURCE = source
@@ -654,8 +654,8 @@ def main() -> None:
     figure2.SHOW_FIGURE_TITLE = False
     figure2.SHOW_NAVIGATIONAL_HEADINGS = False
     figure2.SIMPLE_PANEL_LABELS = True
-    figure2.METRIC = "accessible_cooling_index_800m_c"
-    figure2.ACCESS_RADIUS_M = 800
+    figure2.METRIC = "accessible_cooling_index_400m_c"
+    figure2.ACCESS_RADIUS_M = 400
     figure2.PANEL_E_ACCESS_RADIUS_M = 400
     figure2.GREEN_RADIUS_M = 400
     figure2.REACHABILITY_YLIM = (0, 72)
@@ -1612,7 +1612,7 @@ def add_scale_bar(ax, extent, km=5, x_fraction=0.74, y_fraction=0.055):
     y0 = extent[2] + y_fraction * (extent[3] - extent[2])
     length = km * 1000
     ax.plot([x0, x0 + length], [y0, y0], color="#222222", lw=1.5, solid_capstyle="butt", zorder=20)
-    ax.text(x0 + length / 2, y0 + 800, f"{km} km", ha="center", va="bottom", fontsize=5.5)
+    ax.text(x0 + length / 2, y0 + 400, f"{km} km", ha="center", va="bottom", fontsize=5.5)
 
 
 def planning_boundary(crs):
@@ -1666,11 +1666,7 @@ def bivariate_cooling_hdb(cooling, hdb_density):
 
 
 def bivariate_access_hdb(access_distance, hdb_density):
-    """Map postcode cooling proximity and HDB density to the 3 x 3 palette.
 
-    Proximity is high at <=400 m, moderate at >400-800 m and limited at >800 m
-    straight-line distance to the nearest modelled cooled footprint.
-    """
     valid = np.isfinite(access_distance)
     access_class = np.zeros(access_distance.shape, dtype=np.int8)
     access_class[(access_distance > 400) & (access_distance <= 800)] = 1
