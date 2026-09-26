@@ -1,28 +1,3 @@
-"""
-
-Usage (from the project root)::
-
-    python scripts/generate_figure5_cooling_performance_R400m.py
-    python scripts/generate_figure5_cooling_performance_R400m.py --recalculate
-
-The default uses the already fitted, official-postcode 400-m network analysis.
-``--recalculate`` independently recomputes the 400-m network integral, the
-within-archetype PC associations, and the two-part green-service models from
-the frozen cooling surface. Neither mode changes the accepted 800-m Figure 5.
-
-For postcode i and positively cooled 100-m cell j, with pedestrian-network
-distance d_ij (including the cooling-cell connector), the metric is
-
-    ACV_i(400) = sum_{d_ij <= 400} C_j A_j exp[-ln(5) (d_ij/400)^2]
-    ACI_i(400) = ACV_i(400) / [pi * 400^2 * 0.8 / (ln(5) * 10000)]
-
-ACV has units degrees C hectare; ACI has units degrees C equivalent. The
-postcode-to-network connector is excluded, matching the accepted analysis.
-Green provision in panels e/f remains the 400-m mean for 2016--2024.
-All figure associations are postcode-level; this is modelled potential access,
-not observed visits or personal cooling. See network metric contract for detail.
-"""
-
 from __future__ import annotations
 
 import argparse
