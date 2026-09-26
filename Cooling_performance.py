@@ -1,4 +1,4 @@
-"""Recalculate or reuse 400-m network-accessible cooling and render Figure 5.
+"""
 
 Usage (from the project root)::
 
